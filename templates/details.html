@@ -1,0 +1,24 @@
+{%  extends 'base.html' %}
+{% block content %}
+    <main>
+        <div class="main">
+            <div class="title_state">
+                <div class="title"><h1>{{ task.title }}</h1></div>
+                <div class="state_detail" style="color: {{ task.state.color }};">{{ task.state.title }}</div>
+            </div>
+            <div class="dates">
+                Created:
+                <div class="creation_date">{{ task.created }}</div>
+                <div class="taken_date">by: {{ task.start_date }}</div>
+                <div class="deadline">{{ task.deadline }}</div>
+            </div>
+            <div class="text">{{ task.content }}</div>
+
+            <div class="text">{{ task.content }}</div>
+            <div class="add">
+                <a href="/edit/{{ task.id }}" >Edit</a>
+            </div>
+            <a href=".." class="cancel" style="color: #ff5858">Back</a>
+        </div>
+    </main>
+{% endblock %}

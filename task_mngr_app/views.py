@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from django.views.generic import ListView, DetailView
+from django.shortcuts import redirect
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from .models import Task
 
 
@@ -10,3 +10,28 @@ from .models import Task
 class TaskView(ListView):
     model = Task
     template_name = 'home.html'
+
+
+class TaskDetailView(DetailView):
+    model = Task
+    template_name = 'details.html'
+
+
+class TaskEditView(UpdateView):
+    model = Task
+    template_name = 'edit.html'
+    fields = '__all__'
+
+    def form_valid(self, form):
+        task = form.save()
+        return redirect('task_mngr_app:details', pk=task.pk)
+
+
+class NoteAddView(CreateView):
+    model = Task
+    template_name = 'add.html'
+    fields = '__all__'
+
+    def form_valid(self, form):
+        task = form.save()
+        return redirect('NotsApp:details', pk=task.pk)
