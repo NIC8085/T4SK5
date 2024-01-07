@@ -1,10 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends 'base.html' %}
+{% block content %}
+    <main>
+        <form method="post" class="edit_form">
+            {% csrf_token %}
+            <div class="edit_title">
+                <h1>Title</h1>
+                {{ form.title }}
+            </div>
+            <div class="edit_working_person">
+                {{ form.working_person }}
+            </div>
+            <div class="edit_start_date">
+                {{ form.start_date }}
+            </div>
+            <div class="edit_end_date">
+                {{ form.end_date }}
+            </div>
+            <div class="edit_deadline">
+                {{ form.deadline }}
+            </div>
+            <div class="edit_options">
+                <div class="edit_state">
+                    State
+                    {{ form.state }}
+                </div>
+            </div>
+            <div class="edit_content">
+                {{ form.content }}
+            </div>
+            <div class="edit_content">
+                {{ form.files }}
+            </div>
+            <div class="edit_add">
+                <button>Add</button>
+                <a href=".." class="edit_cancel" style="color: #ff5858">Back</a>
+            </div>
+        </form>
+    </main>
+{% endblock %}
