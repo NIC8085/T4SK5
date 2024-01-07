@@ -3,6 +3,7 @@
     <main>
         <form method="post" class="edit_form">
             {% csrf_token %}
+            <!--
             <div class="edit_title">
                 <h1>Title</h1>
                 {{ form.title }}
@@ -31,6 +32,8 @@
             <div class="edit_content">
                 {{ form.files }}
             </div>
+            -->
+            {{ form.as_p }}
             <div class="edit_buttons">
                 <button>Save</button>
                 <a href="/details/{{ task.id }}" class="edit_cancel" style="color: #ff5858">Back</a>

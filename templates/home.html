@@ -6,7 +6,11 @@
 </head>
 <body>
     <h1>gowno</h1>
+    <a href="/login/">wyloguj</a>
+    <br>
+
     {% for task in object_list %}
+        <br>
         <a href="/details/{{ task.id }}" class="task">
             <div class="note">
                 {{ task.title }}<br>
@@ -16,6 +20,14 @@
             </div>
         </a>
     {% endfor %}
+    <br>
+    <a href="/add" class="task">
+        <div class="task">
+            <div class="task_add">Add note</div>
+            <i class="bi bi-plus-square"></i>
+        </div>
+    </a>
+
 </body>
 </html>
 

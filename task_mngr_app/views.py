@@ -1,5 +1,9 @@
-from django.shortcuts import redirect
+from django.contrib.auth import login, authenticate
+from django.http import HttpResponseRedirect
+from django.shortcuts import redirect, render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
+
+from .forms import LoginForm, TaskForm
 from .models import Task
 
 
@@ -27,11 +31,45 @@ class TaskEditView(UpdateView):
         return redirect('task_mngr_app:details', pk=task.pk)
 
 
-class TaskAddView(CreateView):
-    model = Task
-    template_name = 'add.html'
-    fields = '__all__'
+#class TaskAddView(CreateView):
+#    model = Task
+#    template_name = 'add.html'
+#    fields = '__all__'
 
-    def form_valid(self, form):
-        task = form.save()
-        return redirect('task_mngr_app:details', pk=task.pk)
+
+
+
+    #def form_valid(self, form):
+    #    task = form.save()
+    #    return redirect('task_mngr_app:details', pk=task.pk)
+
+
+def task_add(request):
+    if request.method == 'POST':
+        form = TaskForm(request.POST)
+        if form.is_valid():
+            form.save()
+    else:
+        form = TaskForm()
+
+    return render(request, 'add.html', {'form': form})
+
+
+def user_login(request):
+    loginError = False
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            user = authenticate(username=cd['username'], password=cd['password'])
+
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    return HttpResponseRedirect('/')
+            else:
+                loginError = True
+    else:
+        form = LoginForm()
+
+    return render(request, 'login.html', {'form': form, 'loginError': loginError})
