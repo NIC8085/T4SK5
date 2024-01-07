@@ -1,22 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+{% extends 'base.html' %}
+{% block content %}
 <body>
-    <h1>gowno</h1>
-    <a href="/login/">wyloguj</a>
-    <br>
-
     {% for task in object_list %}
         <br>
         <a href="/details/{{ task.id }}" class="task">
-            <div class="note">
-                {{ task.title }}<br>
-                {{ task.state.title }}<br>
-                {{ task.content }}<br>
-                Deadline: {{task.deadline}}
+            <div class="task">
+                <div class="task_name">{{ task.title }}</div>
+                <div class="task_creation_date">{{ task.creation_date|date:"Y-m-d" }}
+                </div>
+                <div class="task_working_person">{{ task.working_person }}</div>
+                <div class="task_state" style="color: {{ task.state.color }};">{{ task.state.title }}</div>
+                <div class="task_deadline">Deadline: {{task.deadline}}</div>
             </div>
         </a>
     {% endfor %}
@@ -29,6 +23,6 @@
     </a>
 
 </body>
-</html>
+{% endblock %}
 
 <!--{}

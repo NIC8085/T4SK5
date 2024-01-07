@@ -4,8 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+    
 </head>
 <body>
+    <nav>
+        <a href=".." class="name">T4SK5<i class="fa-thin fa-clipboard-list"></i></a>
+        <a href="/login/" class="logout">wyloguj</a>
+    </nav>
     {% block content %}
     {% endblock %}
 </body>

@@ -10,4 +10,5 @@ urlpatterns = [
     path('edit/<int:pk>', TaskEditView.as_view(), name='edit'),
     path('add/', views.task_add, name='add'),
     path('login/', views.user_login, name='login'),
+    path('register/', views.register, name='register'),
 ]
