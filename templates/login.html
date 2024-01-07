@@ -1,0 +1,16 @@
+{% block content %}
+    <main>
+        <form method="post" class="edit_form">
+            {% csrf_token %}
+
+            {{ form.as_p }}
+            <div class="log_in">
+                {% if loginError %}
+            	    niepoprawny login<br>
+                {% endif %}
+                <input type="submit" value="Log In">
+            </div>
+            <a href="/register/">register</a>
+        </form>
+    </main>
+{% endblock %}
