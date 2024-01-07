@@ -27,7 +27,7 @@ class TaskEditView(UpdateView):
         return redirect('task_mngr_app:details', pk=task.pk)
 
 
-class NoteAddView(CreateView):
+class TaskAddView(CreateView):
     model = Task
     template_name = 'add.html'
     fields = '__all__'

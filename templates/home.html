@@ -7,10 +7,14 @@
 <body>
     <h1>gowno</h1>
     {% for task in object_list %}
-        {{ task.title }}<br>
-        {{ task.state.title }}<br>
-        {{ task.content }}<br>
-        Deadline: {{task.deadline}}
+        <a href="/details/{{ task.id }}" class="task">
+            <div class="note">
+                {{ task.title }}<br>
+                {{ task.state.title }}<br>
+                {{ task.content }}<br>
+                Deadline: {{task.deadline}}
+            </div>
+        </a>
     {% endfor %}
 </body>
 </html>
