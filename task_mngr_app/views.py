@@ -34,4 +34,4 @@ class TaskAddView(CreateView):
 
     def form_valid(self, form):
         task = form.save()
-        return redirect('NotsApp:details', pk=task.pk)
+        return redirect('task_mngr_app:details', pk=task.pk)

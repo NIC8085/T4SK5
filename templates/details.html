@@ -2,19 +2,24 @@
 {% block content %}
     <main>
         <div class="main">
+
             <div class="title_state">
                 <div class="title"><h1>{{ task.title }}</h1></div>
-                <div class="state_detail" style="color: {{ task.state.color }};">{{ task.state.title }}</div>
+                <div class="working_person">Working person: {{ task.working_person }}</div>
+                Stan: <div class="state_detail" style="color: {{ task.state.color }};">{{ task.state.title }}</div>
             </div>
+
             <div class="dates">
-                Created:
-                <div class="creation_date">{{ task.created }}</div>
-                <div class="taken_date">by: {{ task.start_date }}</div>
-                <div class="deadline">{{ task.deadline }}</div>
+                <div class="creation_date">Created: {{ task.creation_date }}</div>
+                <div class="taken_date">Przyjęte: {{ task.start_date }}</div>
+                <div class="taken_date">Zakończone: {{ task.end_date }}</div>
+                <div class="deadline">Deadline: {{ task.deadline }}</div>
             </div>
             <div class="text">{{ task.content }}</div>
 
-            <div class="text">{{ task.content }}</div>
+            <div class="text">Załączone pliki: <a href="{{ task.files }}" download> Pobierz plik </a></div>
+
+
             <div class="add">
                 <a href="/edit/{{ task.id }}" >Edit</a>
             </div>
