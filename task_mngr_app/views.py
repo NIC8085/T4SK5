@@ -45,7 +45,7 @@ def task_add(request):
     if request.method == 'POST':
         form = TaskForm(request.POST)
         if form.is_valid():
-            task=form.save()
+            task = form.save()
             return redirect('task_mngr_app:details', pk=task.pk)
     else:
         form = TaskForm()
@@ -78,8 +78,7 @@ def register(request):
         form = RegistrationForm(request.POST)
         if form.is_valid():
             form.save()
-            # Po udanej rejestracji możesz przekierować użytkownika na inną stronę np. do strony logowania
-            return redirect('login')  # Tutaj zastąp 'login' nazwą URL do strony logowania
+            return redirect('/login/')
     else:
         form = RegistrationForm()
 

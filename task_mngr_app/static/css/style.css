@@ -13,6 +13,7 @@ nav{
     padding: 10px;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
     background-color: #212121;
     height: 5vh;
 }
@@ -23,13 +24,18 @@ nav>h1{
     padding-bottom: 9px;
     margin-top: 17px;
 }
-.name{
-    font-size: 50px;
+.header-name-dda{
+    color: white;
+    font-size: 20px;
     margin: auto 0px auto 0px;
     font-weight: bold;
 }
 
-
+.logout{
+    margin-left: auto;
+    margin-right: 10px;
+    margin: auto 10px auto auto;
+}
 
 a.task{
     width: fit-content;
@@ -47,10 +53,3 @@ a.task{
 .note:hover{
     background-color: #585858;
 }
-
-
-
-
-
-
-/*{}

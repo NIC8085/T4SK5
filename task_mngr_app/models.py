@@ -18,7 +18,7 @@ class Task(models.Model):
     end_date = models.DateTimeField(null=True, blank=True)
     deadline = models.DateTimeField()
     state = models.ForeignKey(State, on_delete=models.CASCADE, null=True)
-    title = models.CharField(max_length=50)
+    title = models.CharField(max_length=100)
     content = models.TextField()
     files = models.FileField(upload_to='task_files/', null=True, blank=True)
 

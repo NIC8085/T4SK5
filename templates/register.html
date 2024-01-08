@@ -1,20 +1,21 @@
-<!-- plik register.html w katalogu templates/registration -->
+{% extends 'base.html' %}
+{% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Register</title>
-</head>
-<body>
-    <h1>Register</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.username }}
-        {{ form.password }}
-        {{ form.password2 }}
-        <button type="submit">Register</button>
-        <a href="/login/" class="register_cancel" style="color: #ff5858">Back</a>
-    </form>
-</body>
-</html>
+{% block links %}
+    <link rel="stylesheet" href="{% static 'css/user-login.css' %}">
+{% endblock %}
+
+{% block content %}
+    <main>
+        <h1>Create your account</h1>
+        <br>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.username }}
+            {{ form.password }}
+            {{ form.password2 }}
+            <input type="submit" value="Create">
+            <a href="/login/" class="register_cancel" style="color: #ff5858">Back</a>
+        </form>
+    </main>
+{% endblock %}

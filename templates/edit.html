@@ -1,4 +1,10 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'css/edit-add.css' %}">
+{% endblock %}
+
 {% block content %}
     <main>
         <form method="post" class="edit_form" enctype="multipart/form-data">

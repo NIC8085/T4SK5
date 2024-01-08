@@ -1,16 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'css/user-login.css' %}">
+{% endblock %}
+
 {% block content %}
     <main>
         <form method="post" class="edit_form">
             {% csrf_token %}
-
+            <h1>Zaloguj się</h1>
             {{ form.as_p }}
             <div class="log_in">
+
                 {% if loginError %}
-            	    niepoprawny login<br>
+            	    <center style="color: #f00;"> Niepoprawny login</center>
+                    <br>
                 {% endif %}
+
                 <input type="submit" value="Log In">
             </div>
-            <a href="/register/">register</a>
+            <a href="/register/">SIGN UP</a>
         </form>
     </main>
 {% endblock %}

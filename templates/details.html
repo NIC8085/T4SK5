@@ -1,29 +1,32 @@
-{%  extends 'base.html' %}
+{% extends 'base.html' %}
+{% load static %}
+
+{% block links %}
+    <link rel="stylesheet" href="{% static 'css/detail.css' %}">
+{% endblock %}
+
 {% block content %}
     <main>
-        <div class="main">
-
+        <div class="main-box">
             <div class="title_state">
                 <div class="title"><h1>{{ task.title }}</h1></div>
-                <div class="working_person">Working person: {{ task.working_person }}</div>
-                Stan: <div class="state_detail" style="color: {{ task.state.color }};">{{ task.state.title }}</div>
             </div>
 
             <div class="dates">
-                <div class="creation_date">Created: {{ task.creation_date }}</div>
-                <div class="taken_date">Przyjęte: {{ task.start_date }}</div>
-                <div class="taken_date">Zakończone: {{ task.end_date }}</div>
-                <div class="deadline">Deadline: {{ task.deadline }}</div>
+                <div class="working_person">Working person: <b>{{ task.working_person }}</b></div>
+                <div class="state_detail" >Stan: <b style="color: {{ task.state.color }};"> {{ task.state.title }}</b></div>
+                <div class="creation_date">Created: <b>{{ task.creation_date }}</b></div>
+                <div class="taken_date">Przyjęte: <b>{{ task.start_date }}</b></div>
+                <div class="taken_date">Zakończone: <b>{{ task.end_date }}</b></div>
+                <div class="deadline">Deadline: <b>{{ task.deadline }}</b></div>
+                <div class="text"><b>{{ task.content }}</b></div>
+                <div class="text">Załączone pliki: <a href="{{ task.files }}" download> Pobierz plik </a></div>
+
+                <div class="add">
+                    <a href="/edit/{{ task.id }}" >Edit</a>
+                    <a href=".." class="cancel" style="color: #ff5858">Back</a>
+                </div>
             </div>
-            <div class="text">{{ task.content }}</div>
-
-            <div class="text">Załączone pliki: <a href="{{ task.files }}" download> Pobierz plik </a></div>
-
-
-            <div class="add">
-                <a href="/edit/{{ task.id }}" >Edit</a>
-            </div>
-            <a href=".." class="cancel" style="color: #ff5858">Back</a>
         </div>
     </main>
 {% endblock %}
